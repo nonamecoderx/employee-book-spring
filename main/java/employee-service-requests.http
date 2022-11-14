@@ -1,0 +1,30 @@
+### получим всех сотрудников
+GET http://localhost:8080/employees
+### создадим сотрудника 1
+POST http://localhost:8080/employees
+Content-Type: application/json
+
+{
+  "firstName": "Test1",
+  "lastName": "Test1",
+  "department": 1,
+  "salary": 1000
+}
+### создадим сотрудника 2
+POST http://localhost:8080/employees
+Content-Type: application/json
+
+{
+  "firstName": "Test2",
+  "lastName": "Test2",
+  "department": 1,
+  "salary": 3000
+}
+### получить сумму зарплат всех сотрудников
+GET http://localhost:8080/employees/salary/sum
+### получить сотрудника с максимальной зарплатой
+GET http://localhost:8080/employees/salary/max
+### получить сотрудника с минимальной зарплатой
+GET http://localhost:8080/employees/salary/min
+### получить сотрудника с зарплатой, выше средней
+GET http://localhost:8080/employees/salary/HigherAverage
