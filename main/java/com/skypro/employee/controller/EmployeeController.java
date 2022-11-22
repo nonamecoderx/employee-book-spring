@@ -30,15 +30,15 @@ public class EmployeeController {
     }
     @GetMapping("/employees/salary/sum")
     public int getSalarySum(){
-        return this.employeeService.getSalarySum();
+        return employeeService.getSalarySum();
     }
     @GetMapping("/employees/salary/max")
     public Employee getSalaryMax(){
-        return this.employeeService.getSalaryMax();
+        return employeeService.getSalaryMax();
     }
     @GetMapping("/employees/salary/min")
     public Employee getSalaryMin(){
-        return this.employeeService.getSalaryMin();
+        return employeeService.getSalaryMin();
     }
     @GetMapping("/employees/salary/HigherAverage")
     public Set<Employee> getHigherAverage(){

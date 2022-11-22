@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
+    public EmployeeService() {
+    }
+
     private final Map<Integer, Employee> employees = new HashMap<>();
 
     public Collection<Employee> getAllEmployees() {
@@ -30,20 +33,22 @@ public class EmployeeService {
 
     public int getSalarySum() {
         return employees.values().stream()
-                .mapToInt(e -> e.getSalary())
+                .mapToInt(Employee::getSalary)
                 .sum();
     }
 
     public Employee getSalaryMax() {
         return employees.values()
                 .stream()
-                .max(Comparator.comparingInt(Employee::getSalary)).get();
+                .max(Comparator.comparingInt(Employee::getSalary))
+                .orElseThrow(RuntimeException::new);
     }
 
     public Employee getSalaryMin() {
         return employees.values()
                 .stream()
-                .min(Comparator.comparingInt(Employee::getSalary)).get();
+                .min(Comparator.comparingInt(Employee::getSalary))
+                .orElseThrow(RuntimeException::new);
     }
 
     public Set<Employee> getHigherAverage() {
@@ -52,6 +57,9 @@ public class EmployeeService {
         }
         int average = getSalarySum()/employees.size();
         return employees.values().stream().filter(s->s.getSalary()>average).collect(Collectors.toSet());
+    }
+    public Employee removeEmployee (int id){
+        return employees.remove(id);
     }
 }
 

@@ -1,5 +1,7 @@
 package com.skypro.employee.model;
 
+import java.util.Objects;
+
 public class Employee {
     private String firstName;
     private String lastName;
@@ -20,6 +22,14 @@ public class Employee {
         id = counter++;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public String getName() {
         return this.firstName + this.lastName;
     }
@@ -38,6 +48,19 @@ public class Employee {
 
     public int getSalary() {
         return this.salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return department == employee.department && salary == employee.salary && id == employee.id && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, department, salary, id);
     }
 
     @Override
